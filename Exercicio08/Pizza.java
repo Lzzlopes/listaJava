@@ -3,7 +3,7 @@ package Exercicio08;
 import java.util.*;
 
 public class Pizza {
-    private int Codigo;
+    private int codigo;
     private String nome;
     private float valor;
     private String ingrediente;
@@ -21,8 +21,20 @@ public class Pizza {
 
     public void addPizza(Pizza info){sabor.add(info);}
 
+    public float getValor() {
+        return valor;
+    }
+
     public String getNome() {
         return nome;
+    }
+
+    public int novoCodigo(){
+        int i=0;
+        for(Pizza p : sabor){
+            i++;
+        }
+        return (i+1);
     }
 
     public Pizza mostrarPizzas(){
@@ -31,12 +43,26 @@ public class Pizza {
         }
         System.out.println("Escolha um sabor");
 
+        Scanner scan = new Scanner(System.in);
+        int opcao = Integer.parseInt(scan.nextLine());
+
         for(Pizza p : sabor){
-            System.out.println(sabor);
-        }
+            if(opcao == p.codigo){
+                return p;
+            }
+        } return null;
     }
 
 
+    @Override
+    public String toString(){
+        return "-----------------------------------" +
+                "\nCodigo: " + codigo +
+                "\nsabor: " + nome +
+                "\nvalor: " + valor +
+                "\nIngredientes: " + ingrediente +
+                "\n-----------------------------------";
+    }
 
 
 }
